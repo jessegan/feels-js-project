@@ -9,15 +9,28 @@
         <link rel="stylesheet" href="style.css">
 
         <!-- JavaScript -->
+        <script src="models/entry.js"></script>
         <script type="text/javascript" src="index.js"></script>
 
+        <style>
+            .entry-container{
+                width: 500px;
+                height: 100px;
+                display: inline-block;
+            }
+            #entries-list{
+                overflow-x: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
+            }
+        </style>
     </head>
 
     <body>
 
         <div id="main-container">
             
-            <div id="entries-list">    
+            <div id="entries-list"> 
             </div>
 
         </div>
