@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
+# Generate 15 entries
+15.times do
+    Entry.create(rating: Faker::Number.within(range: 1..100), note: Faker::Lorem.paragraph)
+end
