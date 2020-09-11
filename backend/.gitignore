@@ -30,3 +30,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore GemFile.lock
+Gemfile.lock
+
+# Ignore envrionment file
+.env
