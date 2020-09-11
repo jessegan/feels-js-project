@@ -1,4 +1,5 @@
 class Entry {
+    static all = []
 
     constructor(id,rating,note,date,time){
         this.id=id
@@ -6,6 +7,25 @@ class Entry {
         this.note=note
         this.date=date
         this.time=time
+    }
+
+    /**
+     * Construct a new Entry and save in class variable
+     * 
+     * @param {Integer} id 
+     * @param {Integer} rating 
+     * @param {String} note 
+     * @param {String} date 
+     * @param {String} time 
+     * 
+     * @return {Entry} newly constructed Entry
+     */
+    static create(id,rating,note,date,time){
+        let entry = new Entry(id,rating,note,date,time)
+
+        this.all.push(entry)
+
+        return entry
     }
 
 }
