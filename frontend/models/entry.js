@@ -89,4 +89,41 @@ class Entry {
         })
     }
 
+    /**
+     * Creates a new Entry based on data passed in from form submission
+     * 
+     * @param {*} e 
+     */
+    static createFromForm(e){
+        // prevent default submit behavior
+        e.preventDefault()
+
+        // create strong params for entry data
+        const strongParams = {
+            entry: {
+                rating: this.querySelector("#rating-slider").value,
+                note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed bibendum lorem. Pellentesque habitant morbi tristique senectus et netus et."
+            }
+        }
+
+        // setup config object for post request
+        const config = {
+            method: "POST",
+            headers: {
+                "Accept": 'application/json',
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(strongParams)
+        }
+
+        // post request for creating new entry
+        fetch(`${baseURL}/entries`,config)
+            .then(resp => resp.json())
+            .then(entryData => {
+                let data = entryData.data.attributes
+                Entry.create(data.id,data.rating,data.note,data.date).render()
+            })
+            .catch(err => console.log(err))
+    }
+
 }
