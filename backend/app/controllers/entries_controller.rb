@@ -7,4 +7,24 @@ class EntriesController < ApplicationController
         render json: EntrySerializer.new(entries).serialized_json
     end
 
+    # creates a new Entry based on params and renders json for new entry
+    def create
+        entry = Entry.new(entryParams)
+
+        if entry.save
+            render json: EntrySerializer.new(entry).serialized_json
+        else
+            render json: {
+                error: "Problem creating new Entry.",
+                status: "400"
+            }, status: 400
+        end
+    end
+
+    private
+
+    def entryParams
+        params.require(:entry).permit(:rating,:note)
+    end
+
 end
