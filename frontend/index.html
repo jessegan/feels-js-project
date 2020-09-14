@@ -12,18 +12,6 @@
         <script src="models/entry.js"></script>
         <script type="text/javascript" src="index.js"></script>
 
-        <style>
-            .entry-container{
-                width: 500px;
-                height: 100px;
-                display: inline-block;
-            }
-            #entries-list{
-                overflow-x: scroll;
-                overflow-y: hidden;
-                white-space: nowrap;
-            }
-        </style>
     </head>
 
     <body>
@@ -31,6 +19,26 @@
         <div id="main-container">
 
             <div id='date-container'>
+            </div>
+
+            <div id='entry-form-container'>
+                <form id='entry-form'>
+
+                    <div>
+                        <h3>How are you feeling today?</h3>
+                    </div>
+
+                    <div>
+                        <span>Worst Day</span>
+                        <input type="range" min="1" max="100" value="50" id="rating">
+                        <span>Best Day</span>
+                    </div>
+                    
+                    <div>
+                        <input type="submit">
+                    </div>
+
+                </form>
             </div>
             
             <div id="entries-list"> 
