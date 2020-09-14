@@ -1,4 +1,5 @@
 const entriesList = () => document.querySelector("#entries-list")
+const dateContainer = () => document.querySelector("#date-container")
 
 const baseURL = "http://localhost:3000"
 
@@ -9,8 +10,8 @@ document.addEventListener("DOMContentLoaded", callOnLoad)
  * Loads page content and add event listeners to key elements.
  */
 function callOnLoad(){
-    loadEntries()
     loadCurrentDate()
+    loadEntries()
 }
 
 /**
@@ -31,10 +32,11 @@ function loadEntries(){
  * Load the current date and time on the page and set timeout for changing time
  */
 function loadCurrentDate(){
+    renderDate()
+
     let date = dateInterval()
 
     date.start()
-    setTimeout(date.stop,5*1000)
 }
 
 function dateInterval(){
@@ -56,6 +58,16 @@ function dateInterval(){
 }
 
 function renderDate(){
-    let today = new Date()
-    console.log(today)
+    dateContainer().innerHTML = ""
+
+    let current = new Date()
+
+    let date = document.createElement('h1')
+    date.innerHTML = `${current.toLocaleDateString('default', {weekday: 'long'})} ${current.toLocaleString('default', {month: 'short'})} ${current.getDate()}`
+
+    let time = document.createElement('h3')
+    time.innerHTML = `${current.toLocaleTimeString([],{hour12: true, hour: "numeric", minute: "2-digit", second: "2-digit"})}`
+
+    dateContainer().appendChild(date)
+    dateContainer().appendChild(time)
 }
