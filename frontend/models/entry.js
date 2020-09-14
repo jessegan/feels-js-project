@@ -16,7 +16,7 @@ class Entry {
         this.id=id
         this.rating=rating
         this.note=note
-        this.date=date
+        this.date= new Date(date)
         this.time=time
     }
 
@@ -59,7 +59,19 @@ class Entry {
     render(){
         let div = document.createElement('div')
         div.classList.add("entry-container")
-        div.innerHTML = this.rating
+
+        let year = document.createElement('span')
+        year.classList.add("year-span")
+        year.innerHTML = this.date.getFullYear()
+        div.appendChild(year)
+
+        let date = document.createElement('p')
+        date.innerHTML = `${this.date.toLocaleDateString('default', {weekday: 'long'})} ${this.date.toLocaleString('default', {month: 'short'})} ${this.date.getDate()}`
+        div.appendChild(date)
+
+        let rating = document.createElement('p')
+        rating.innerHTML = this.rating
+        div.appendChild(rating)
 
         entriesList().appendChild(div)
     }
