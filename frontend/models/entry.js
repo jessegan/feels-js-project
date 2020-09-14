@@ -10,14 +10,12 @@ class Entry {
      * @param {Integer} rating 
      * @param {String} note 
      * @param {String} date 
-     * @param {String} time 
      */
-    constructor(id,rating,note,date,time){
+    constructor(id,rating,note,date){
         this.id=id
         this.rating=rating
         this.note=note
         this.date= new Date(date)
-        this.time=time
     }
 
     /**
@@ -27,12 +25,11 @@ class Entry {
      * @param {Integer} rating 
      * @param {String} note 
      * @param {String} date 
-     * @param {String} time 
      * 
      * @return {Entry} newly constructed Entry
      */
     static create(id,rating,note,date,time){
-        let entry = new Entry(id,rating,note,date,time)
+        let entry = new Entry(id,rating,note,date)
 
         this.all.push(entry)
 
@@ -47,7 +44,7 @@ class Entry {
     static createEntries(entriesData){
         entriesData.forEach(data => {
             let attrs = data.attributes
-            Entry.create(attrs.id, attrs.rating, attrs.note, attrs.date, attrs.time)
+            Entry.create(attrs.id, attrs.rating, attrs.note, attrs.date)
         })
     }
 
