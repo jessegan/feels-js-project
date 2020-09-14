@@ -39,13 +39,18 @@ function loadCurrentDate(){
     date.start()
 }
 
+/**
+ * Return an object for the dateInterval that starts and stop an interval to update the date
+ */
 function dateInterval(){
     let id
 
+    // Sets and interval to render the date and time on the page
     const start = () => {
         id = setInterval(renderDate,1*1000)
     }
 
+    // Clears the interval set if id has been set
     const stop = () => {
         clearInterval(id)
         id = undefined
@@ -57,6 +62,9 @@ function dateInterval(){
     }
 }
 
+/**
+ * Renders the date and time onto the page
+ */
 function renderDate(){
     dateContainer().innerHTML = ""
 
