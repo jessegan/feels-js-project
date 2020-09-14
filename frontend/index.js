@@ -1,5 +1,6 @@
 const entriesList = () => document.querySelector("#entries-list")
 const dateContainer = () => document.querySelector("#date-container")
+const entryForm = () => document.querySelector("form")
 
 const baseURL = "http://localhost:3000"
 
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", callOnLoad)
 function callOnLoad(){
     loadCurrentDate()
     loadEntries()
+    entryForm().addEventListener("submit",Entry.createFromForm)
 }
 
 /**
@@ -73,7 +75,7 @@ function renderDate(){
     let date = document.createElement('h1')
     date.innerHTML = `${current.toLocaleDateString('default', {weekday: 'long'})} ${current.toLocaleString('default', {month: 'short'})} ${current.getDate()}`
 
-    let time = document.createElement('h3')
+    let time = document.createElement('h6')
     time.innerHTML = `${current.toLocaleTimeString([],{hour12: true, hour: "numeric", minute: "2-digit", second: "2-digit"})}`
 
     dateContainer().appendChild(date)
