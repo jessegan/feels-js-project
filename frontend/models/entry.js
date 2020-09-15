@@ -143,7 +143,25 @@ class Entry {
         e.preventDefault()
 
         let entryId = this.getAttribute("data-id")
+        let entryDiv = this.parentNode
 
-        console.log(entryId)
+        const config = {
+            method: 'DELETE',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            }
+        }
+
+        fetch(`${baseURL}/entries/${entryId}`,config)
+            .then(resp => resp.json())
+            .then(data => {
+                // Delete Entry
+                Entry.all = Entry.all.filter(entry => entry.id !== data.data.id)
+
+                // Remove entry from page
+                entryDiv.parentNode.removeChild(entryDiv)
+            })
+            .catch(err => console.log(err))
     }
 }
