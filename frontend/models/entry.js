@@ -103,8 +103,8 @@ class Entry {
         // create strong params for entry data
         const strongParams = {
             entry: {
-                rating: this.querySelector("#rating-slider").value,
-                note: this.querySelector("#note-textarea").value
+                rating: this.querySelector(".rating-slider").value,
+                note: this.querySelector(".note-textarea").value
             }
         }
 
