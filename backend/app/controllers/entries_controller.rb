@@ -21,6 +21,21 @@ class EntriesController < ApplicationController
         end
     end
 
+    # destroys the entry based on id in params
+    def destroy
+        entry = Entry.find(params[:id])
+
+        if entry
+            entry.destroy
+            render json: EntrySerializer.new(entry).serialized_json
+        else
+            render json: {
+                error: "Could not find an entry with id #{params[:id]}.",
+                status: "400"
+            }, status: 400
+        end
+    end
+
     private
 
     def entryParams
