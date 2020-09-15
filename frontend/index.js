@@ -14,6 +14,9 @@ function callOnLoad(){
     loadCurrentDate()
     loadEntries()
     entryForm().addEventListener("submit",Entry.createFromForm)
+
+    document.querySelector("#scroll-left").addEventListener("click",scrollEntriesList.bind(null,-500))
+    document.querySelector("#scroll-right").addEventListener("click",scrollEntriesList.bind(null,500))
 }
 
 /**
@@ -85,4 +88,10 @@ function renderDate(){
 function resetEntryForm(){
     entryForm().querySelector(".rating-slider").value = 50
     entryForm().querySelector(".note-textarea").value = ""
+}
+
+
+function scrollEntriesList(px,e){
+    entriesList().scrollLeft += px
+    console.log(px)
 }
