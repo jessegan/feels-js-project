@@ -1,10 +1,13 @@
+#entries-list{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
 .entry-container{
     width: 500px;
     height: 100px;
     display: inline-block;
 }
-#entries-list{
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
+.entry-note-default{
+    overflow-wrap: break-word;
 }

@@ -70,6 +70,11 @@ class Entry {
         rating.innerHTML = this.rating
         div.appendChild(rating)
 
+        let note = document.createElement('p')
+        note.classList.add("entry-note-default")
+        note.innerHTML = this.note
+        div.appendChild(note)
+
         entriesList().appendChild(div)
     }
 
