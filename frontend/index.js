@@ -75,7 +75,7 @@ function renderDate(){
     let date = document.createElement('h1')
     date.innerHTML = `${current.toLocaleDateString('default', {weekday: 'long'})} ${current.toLocaleString('default', {month: 'short'})} ${current.getDate()}`
 
-    let time = document.createElement('h6')
+    let time = document.createElement('h3')
     time.innerHTML = `${current.toLocaleTimeString([],{hour12: true, hour: "numeric", minute: "2-digit", second: "2-digit"})}`
 
     dateContainer().appendChild(date)
