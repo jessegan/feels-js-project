@@ -75,6 +75,12 @@ class Entry {
         note.innerHTML = this.note
         div.appendChild(note)
 
+        let delete_button = document.createElement('a')
+        delete_button.setAttribute("data-id",this.id)
+        delete_button.innerHTML = "delete"
+        delete_button.addEventListener("click",Entry.deleteFromButton)
+        div.appendChild(delete_button)
+
         entriesList().appendChild(div)
     }
 
@@ -82,10 +88,12 @@ class Entry {
     // CLASS METHODS
 
     /**
-     * Renders all Entry objects to the document
+     * Clears entries list and then renders all Entry objects to the document
      * 
      */
     static renderEntries(){
+        entriesList().innerHTML = ""
+
         this.all.forEach(entry => {
             entry.render()
         })
@@ -126,6 +134,16 @@ class Entry {
                 Entry.create(data.id,data.rating,data.note,data.date).render()
             })
             .catch(err => console.log(err))
+
+        resetEntryForm()
     }
 
+
+    static deleteFromButton(e){
+        e.preventDefault()
+
+        let entryId = this.getAttribute("data-id")
+
+        console.log(entryId)
+    }
 }
