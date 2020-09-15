@@ -13,8 +13,12 @@
         <script type="text/javascript" src="index.js"></script>
 
          <!-- Materializecss -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+
+        <!-- Bootstrap files -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
 
     </head>
 
@@ -22,20 +26,18 @@
 
         <div id="main-container" class="container">
 
-            <div id='date-container' class="center-align">
+            <div id='date-container' class="text-center">
             </div>
 
-            <div id='entry-form-container'>
+            <div id='entry-form-container' class="center-align">
                 <form id='entry-form'>
 
                     <div>
-                        <h3>How are you feeling today?</h3>
+                        <h1>How are you feeling?</h3>
                     </div>
 
                     <div>
-                        <span>Worst Day</span>
-                        <input type="range" name="rating" min="1" max="100" value="50" class="rating-slider">
-                        <span>Best Day</span>
+                        Worst Day<input type="range" name="rating" min="1" max="100" value="50" class="rating-slider">Best Day
                     </div>
                     
                     <div>
@@ -59,6 +61,10 @@
 
         </div>
 
+        <!-- Bootstrap files -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 
 </html>
