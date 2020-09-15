@@ -28,7 +28,7 @@ class Entry {
      * 
      * @return {Entry} newly constructed Entry
      */
-    static create(id,rating,note,date,time){
+    static create(id,rating,note,date){
         let entry = new Entry(id,rating,note,date)
 
         this.all.push(entry)
