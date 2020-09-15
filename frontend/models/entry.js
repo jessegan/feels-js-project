@@ -104,7 +104,7 @@ class Entry {
         const strongParams = {
             entry: {
                 rating: this.querySelector("#rating-slider").value,
-                note: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed bibendum lorem. Pellentesque habitant morbi tristique senectus et netus et."
+                note: this.querySelector("#note-textarea").value
             }
         }
 
