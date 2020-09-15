@@ -1,6 +1,6 @@
 const entriesList = () => document.querySelector("#entries-list")
 const dateContainer = () => document.querySelector("#date-container")
-const entryForm = () => document.querySelector("form")
+const entryForm = () => document.querySelector("#entry-form")
 
 const baseURL = "http://localhost:3000"
 
@@ -80,4 +80,9 @@ function renderDate(){
 
     dateContainer().appendChild(date)
     dateContainer().appendChild(time)
+}
+
+function resetEntryForm(){
+    entryForm().querySelector(".rating-slider").value = 50
+    entryForm().querySelector(".note-textarea").value = ""
 }
