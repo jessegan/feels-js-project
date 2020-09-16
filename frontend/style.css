@@ -1,13 +1,19 @@
+.note-textarea {
+    resize: none;
+}
+
 #entries-list{
+    display: flex;
+    flex-direction: row-reverse;
+
     overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
+    scroll-behavior: smooth;
+
+    height: 25vh;
 }
-.entry-container{
-    width: 500px;
-    height: 100px;
-    display: inline-block;
+
+.entry-container {
+    width: 20%;
+    flex-shrink: 0;
 }
-.entry-note-default{
-    overflow-wrap: break-word;
-}
+
