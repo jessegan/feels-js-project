@@ -55,7 +55,7 @@ class Entry {
      */
     render(append=true){
         let div = document.createElement('div')
-        div.classList.add("h-100","mx-3","border","border-primary", "rounded-circle","text-center","align-middle")
+        div.classList.add("mx-3","border","border-primary", "rounded-circle","text-center","align-middle")
         div.classList.add("entry-container")
 
         let year = document.createElement('span')

@@ -6,14 +6,16 @@
     display: flex;
     flex-direction: row-reverse;
 
-    overflow-x: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
 
     height: 25vh;
 }
 
 .entry-container {
-    width: 20%;
+    width: 225px;
+    height: 225px;
+
     flex-shrink: 0;
 }
 
