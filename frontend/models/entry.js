@@ -53,7 +53,7 @@ class Entry {
     /**
      * Adds entry div to document
      */
-    render(){
+    render(append=true){
         let div = document.createElement('div')
         div.classList.add("entry-container")
 
@@ -81,7 +81,7 @@ class Entry {
         delete_button.addEventListener("click",Entry.deleteFromButton)
         div.appendChild(delete_button)
 
-        entriesList().appendChild(div)
+        append ? entriesList().appendChild(div) : entriesList().prepend(div)
     }
 
 
@@ -131,7 +131,7 @@ class Entry {
             .then(resp => resp.json())
             .then(entryData => {
                 let data = entryData.data.attributes
-                Entry.create(data.id,data.rating,data.note,data.date).render()
+                Entry.create(data.id,data.rating,data.note,data.date).render(false)
             })
             .catch(err => console.log(err))
 
