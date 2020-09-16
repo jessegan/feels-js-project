@@ -55,29 +55,26 @@ class Entry {
      */
     render(append=true){
         let div = document.createElement('div')
+        div.classList.add("h-100","mx-3","border","border-primary", "rounded-circle","text-center","align-middle")
         div.classList.add("entry-container")
 
         let year = document.createElement('span')
-        year.classList.add("year-span")
+        year.classList.add("year-span","align-middle")
         year.innerHTML = this.date.getFullYear()
         div.appendChild(year)
 
-        let date = document.createElement('p')
-        date.innerHTML = `${this.date.toLocaleDateString('default', {weekday: 'long'})} ${this.date.toLocaleString('default', {month: 'short'})} ${this.date.getDate()}`
+        let date = document.createElement('h5')
+        date.innerHTML = `${this.date.toLocaleDateString('default', {weekday: 'short'})}, ${this.date.toLocaleString('default', {month: 'short'})} ${this.date.getDate()}`
         div.appendChild(date)
 
-        let rating = document.createElement('p')
+        let rating = document.createElement('h1')
         rating.innerHTML = this.rating
         div.appendChild(rating)
 
-        let note = document.createElement('p')
-        note.classList.add("entry-note-default")
-        note.innerHTML = this.note
-        div.appendChild(note)
-
-        let delete_button = document.createElement('a')
+        let delete_button = document.createElement('button')
+        delete_button.classList.add("btn","btn-danger","btn-sm")
         delete_button.setAttribute("data-id",this.id)
-        delete_button.innerHTML = "delete"
+        delete_button.innerHTML = "Delete"
         delete_button.addEventListener("click",Entry.deleteFromButton)
         div.appendChild(delete_button)
 
