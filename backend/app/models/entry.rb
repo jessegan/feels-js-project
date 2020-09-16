@@ -9,6 +9,6 @@ class Entry < ApplicationRecord
 
     ### SCOPES
 
-    default_scope {order(created_at: :asc)}
+    default_scope {order(created_at: :desc)}
 
 end
