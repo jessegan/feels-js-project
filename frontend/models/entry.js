@@ -63,6 +63,7 @@ class Entry {
      */
     render(append=true){
         let div = document.createElement('div')
+        div.id = `entry-${this.id}`
         div.classList.add("mx-3","border","border-primary", "rounded-circle","text-center","align-middle")
         div.classList.add("entry-container")
 
@@ -108,6 +109,13 @@ class Entry {
         this.emotions.forEach(e => {
             emotionsContainer.appendChild(e.createModalDiv())
         })
+
+        let old_button = entryModal().querySelector(".modal-footer button")
+        let new_button = old_button.cloneNode(true)
+        new_button.setAttribute("data-id",this.id)
+        new_button.addEventListener("click",Entry.deleteFromButton)
+        old_button.parentNode.replaceChild(new_button,old_button)
+
     }
 
 
@@ -119,6 +127,8 @@ class Entry {
      */
     static renderEntries(){
         entriesList().innerHTML = ""
+
+        this.all = this.all.sort((a,b) => b.date.getTime() - a.date.getTime())
 
         this.all.forEach(entry => {
             entry.render()
@@ -166,10 +176,9 @@ class Entry {
 
 
     static deleteFromButton(e){
-        e.preventDefault()
 
         let entryId = this.getAttribute("data-id")
-        let entryDiv = this.parentNode
+        let entryDiv = document.querySelector(`#entry-${entryId}`)
 
         const config = {
             method: 'DELETE',
