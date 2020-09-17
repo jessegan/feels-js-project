@@ -2,6 +2,9 @@ class Entry < ApplicationRecord
 
     ### ASSOCIATIONS
 
+    has_many :entry_emotions, dependent: :destroy
+    has_many :emotions, through: :entry_emotions
+
     ### VALIDATIONS
 
     validates :rating, presence: true
