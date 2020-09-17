@@ -102,6 +102,12 @@ class Entry {
 
         let rating = entryModal().querySelector(".rating-value")
         rating.innerHTML = this.rating
+
+        let emotionsContainer = entryModal().querySelector(".emotions-list")
+        emotionsContainer.innerHTML = ""
+        this.emotions.forEach(e => {
+            emotionsContainer.appendChild(e.createModalDiv())
+        })
     }
 
 

@@ -20,12 +20,16 @@ class Emotion {
             
             return new Emotion(attrs.name)
         })
-        
+
         return emotions
     }
 
-    renderModal(){
-        let emotionsList = entryModal().querySelector(".emotions-list")
+    createModalDiv(){
+        let div = document.createElement('div')
+        div.classList.add("col-sm-auto","border","rounded-pill","mx-1")
+        div.innerHTML = this.name
+
+        return div
     }
 
 }
