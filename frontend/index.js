@@ -1,6 +1,7 @@
 const entriesList = () => document.querySelector("#entries-list")
 const dateContainer = () => document.querySelector("#date-container")
 const entryForm = () => document.querySelector("#entry-form")
+const entryModal = () => document.querySelector("#entryModal")
 
 const baseURL = "http://localhost:3000"
 

@@ -71,14 +71,29 @@ class Entry {
         rating.innerHTML = this.rating
         div.appendChild(rating)
 
-        let delete_button = document.createElement('button')
-        delete_button.classList.add("btn","btn-danger","btn-sm")
-        delete_button.setAttribute("data-id",this.id)
-        delete_button.innerHTML = "Delete"
-        delete_button.addEventListener("click",Entry.deleteFromButton)
-        div.appendChild(delete_button)
+        let view_button = document.createElement('button')
+        view_button.classList.add("btn","btn-primary","btn-sm")
+        view_button.setAttribute("data-id",this.id)
+        view_button.setAttribute("data-toggle","modal")
+        view_button.setAttribute("data-target","#entryModal")
+        view_button.innerHTML = "View"
+
+        view_button.addEventListener("click",Entry.renderModal.bind(this))
+        
+        div.appendChild(view_button)
 
         append ? entriesList().appendChild(div) : entriesList().prepend(div)
+    }
+
+    /**
+     * 
+     */
+    static renderModal(){
+        let title = entryModal().querySelector(".modal-title")
+        title.innerHTML = `${this.date.toLocaleDateString('default', {weekday: 'long'})}, ${this.date.toLocaleString('default', {month: 'short'})} ${this.date.getDate()} ${this.date.getFullYear()}`
+
+        let rating = entryModal().querySelector(".rating-value")
+        rating.innerHTML = this.rating
     }
 
 
