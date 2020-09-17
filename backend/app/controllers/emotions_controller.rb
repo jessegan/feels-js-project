@@ -1,8 +1,8 @@
 class EmotionsController < ApplicationController
 
-    def show
-        emotion = Emotion.find(params[:id])
+    def index
+        emotions = Entry.find(params[:entry_id]).emotions
 
-        render json: EmotionSerializer.new(emotion).serialized_json
+        render json: EmotionSerializer.new(emotions).serialized_json
     end
 end
