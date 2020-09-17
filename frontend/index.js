@@ -29,7 +29,9 @@ function loadEntries(){
         .then(resp => resp.json())
         .then(data => {
             Entry.createEntries(data.data)
-            Entry.renderEntries()
+                .then(()=>{
+                    Entry.renderEntries()
+                })
         })
         .catch(errors => console.log(errors))
 }
