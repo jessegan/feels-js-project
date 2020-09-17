@@ -11,11 +11,13 @@ class Entry {
      * @param {String} note 
      * @param {String} date 
      */
-    constructor(id,rating,note,date){
+    constructor(id,rating,note,date,emotions = []){
         this.id=id
         this.rating=rating
         this.note=note
         this.date= new Date(date)
+
+        this.emotions = emotions
     }
 
     /**
@@ -28,8 +30,8 @@ class Entry {
      * 
      * @return {Entry} newly constructed Entry
      */
-    static create(id,rating,note,date){
-        let entry = new Entry(id,rating,note,date)
+    static create(id,rating,note,date,emotions=[]){
+        let entry = new Entry(id,rating,note,date,emotions)
 
         this.all.push(entry)
 
@@ -42,10 +44,16 @@ class Entry {
      * @param {Array<Object>} entriesData  array of Objects containing data to create Entries
      */
     static createEntries(entriesData){
-        entriesData.forEach(data => {
-            let attrs = data.attributes
-            Entry.create(attrs.id, attrs.rating, attrs.note, attrs.date)
-        })
+        return Promise.all(
+            entriesData.map(data => {
+                let attrs = data.attributes
+
+                return Emotion.getEmotions(attrs.id)
+                    .then(emotions => {
+                        Entry.create(attrs.id, attrs.rating, attrs.note, attrs.date,emotions)
+                    })            
+            })
+        )
     }
 
     // INSTANCE METHODS
