@@ -9,4 +9,8 @@ class Emotion < ApplicationRecord
 
     validates :name, presence: true
 
+    # SCOPES
+
+    default_scope {order(name: :asc)}
+
 end
