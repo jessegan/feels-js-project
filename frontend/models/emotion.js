@@ -48,6 +48,7 @@ class Emotion {
     static renderEmotionsOnForm(){
         document.querySelector("#form-emotions-checkboxes").innerHTML = ""
         emotionFormModal().querySelector(".modal-body").innerHTML = ""
+        document.querySelector("#form-emotions-container").innerHTML = ""
 
         this.all.forEach(emotion => {
             emotion.renderFormInput()
