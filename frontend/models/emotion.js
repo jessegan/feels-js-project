@@ -10,7 +10,7 @@ class Emotion {
     static create(id,name){
         const emotion = new Emotion(id,name)
 
-        self.all.push(emotion)
+        this.all.push(emotion)
 
         return emotion
     }
@@ -26,7 +26,7 @@ class Emotion {
             return fetch(`${baseURL}/emotions`)
                 .then(resp => resp.json(), error => console.log(error))
                 .then(data => {
-                    return this.createEmotions(data.data)
+                    return this.createEmotions(data.data,true)
                 })
         }
     }
