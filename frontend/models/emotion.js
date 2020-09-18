@@ -1,8 +1,18 @@
 class Emotion {
 
+    static all = []
+
     constructor(id,name){
         this.id = id
         this.name = name
+    }
+
+    static create(id,name){
+        const emotion = new Emotion(id,name)
+
+        self.all.push(emotion)
+
+        return emotion
     }
 
     static getEmotions(id=undefined){
