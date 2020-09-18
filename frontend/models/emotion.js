@@ -35,7 +35,7 @@ class Emotion {
         let emotions = emotionsData.map(data => {
             let attrs = data.attributes
             
-            return new Emotion(data.id,attrs.name)
+            return persist ? Emotion.create(data.id,attrs.name) : new Emotion(data.id,attrs.name)
         })
 
         return emotions
