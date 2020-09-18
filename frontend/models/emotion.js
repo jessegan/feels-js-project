@@ -4,6 +4,7 @@ class Emotion {
         this.name = name
     }
 
+
     static getEmotions(id=undefined){
         if (id){
             return fetch(`${baseURL}/entries/${id}/emotions`)
@@ -11,10 +12,16 @@ class Emotion {
                 .then(data => {
                     return this.createEmotions(data.data)
                 })
+        } else {
+            return fetch(`${baseURL}/emotions`)
+                .then(resp => resp.json(), error => console.log(error))
+                .then(data => {
+                    return this.createEmotions(data.data)
+                })
         }
     }
 
-    static createEmotions(emotionsData){
+    static createEmotions(emotionsData, persist=false){
         let emotions = emotionsData.map(data => {
             let attrs = data.attributes
             
