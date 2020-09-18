@@ -98,12 +98,7 @@ function renderDate(){
 function loadEmotionsForm(){
     // fetch name and id of each emotion
     Emotion.getEmotions()
-        .then(emotions => {
-            emotions.forEach(e => {
-                e.renderFormInput()
-                e.renderModal()
-            })
-        })
+        .then(()=>Emotion.renderEmotionsOnForm())
 }
 
 /**
@@ -153,7 +148,6 @@ function emotionFormFunctions(){
 
 function resetEntryForm(){
     entryForm().querySelector(".rating-slider").value = 50
-    entryForm().querySelector(".note-textarea").value = ""
 }
 
 
