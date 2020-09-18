@@ -148,6 +148,7 @@ function emotionFormFunctions(){
 
 function resetEntryForm(){
     entryForm().querySelector(".rating-slider").value = 50
+    Emotion.renderEmotionsOnForm()
 }
 
 
