@@ -41,12 +41,29 @@ class Emotion {
         return emotions
     }
 
+    // INSTANCE METHODS
+
     createModalDiv(){
         let div = document.createElement('div')
         div.classList.add("col-sm-auto","border","rounded-pill","mx-1")
         div.innerHTML = this.name
 
         return div
+    }
+
+    renderFormInput(){
+        let form = entryForm()
+
+        let input = document.createElement('input')
+        input.type = 'checkbox'
+        input.name = 'emotions'
+        input.value = this.id
+        input.id = `emotion-${this.id}`
+        input.hidden = true
+
+        form.appendChild(input)
+
+        return input
     }
 
 }

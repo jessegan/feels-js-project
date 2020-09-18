@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", callOnLoad)
 function callOnLoad(){
     loadCurrentDate()
     loadEntries()
+    
+    loadEmotionsForm()
     entryForm().addEventListener("submit",Entry.createFromForm)
 
     document.querySelector("#scroll-left").addEventListener("click",scrollEntriesList.bind(null,-500))
@@ -86,6 +88,19 @@ function renderDate(){
 
     dateContainer().appendChild(date)
     dateContainer().appendChild(time)
+}
+
+/**
+ * Fetch emotions from API, load selection options into Entry form
+ */
+function loadEmotionsForm(){
+    // fetch name and id of each emotion
+    Emotion.getEmotions()
+        .then(emotions => {
+            emotions.forEach(e => {
+                e.renderFormInput()
+            })
+        })
 }
 
 function resetEntryForm(){
