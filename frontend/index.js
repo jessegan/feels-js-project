@@ -20,8 +20,8 @@ function callOnLoad(){
     entryForm().querySelector("#add-emotion-btn").addEventListener("click",e=>e.preventDefault())
     entryForm().addEventListener("submit",Entry.createFromForm)
 
-    document.querySelector("#scroll-left").addEventListener("click",scrollEntriesList.bind(null,-500))
-    document.querySelector("#scroll-right").addEventListener("click",scrollEntriesList.bind(null,500))
+    document.querySelector("#scroll-left").addEventListener("click",scrollEntriesList.bind(null,-750))
+    document.querySelector("#scroll-right").addEventListener("click",scrollEntriesList.bind(null,750))
 }
 
 /**
@@ -154,5 +154,4 @@ function resetEntryForm(){
 
 function scrollEntriesList(px,e){
     entriesList().scrollLeft += px
-    console.log(px)
 }
