@@ -70,12 +70,17 @@ class Emotion {
         let modal = emotionFormModal()
 
         let div = document.createElement('div')
-        div.classList.add("py-2")
+        div.classList.add("py-2","border-top","border-bottom")
 
         let name = document.createElement('h6')
+        name.classList.add("d-inline")
         name.innerHTML = this.name
-
         div.appendChild(name)
+
+        let btn = document.createElement('button')
+        btn.classList.add("btn","btn-primary","btn-sm","rounded-pill","mx-5")
+        btn.innerHTML = "Add"
+        div.appendChild(btn)
 
         modal.querySelector(".modal-body").appendChild(div)
 
