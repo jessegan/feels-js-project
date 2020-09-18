@@ -17,6 +17,7 @@ function callOnLoad(){
     loadEntries()
     
     loadEmotionsForm()
+    entryForm().querySelector("#add-emotion-btn").addEventListener("click",e=>e.preventDefault())
     entryForm().addEventListener("submit",Entry.createFromForm)
 
     document.querySelector("#scroll-left").addEventListener("click",scrollEntriesList.bind(null,-500))
@@ -104,6 +105,51 @@ function loadEmotionsForm(){
             })
         })
 }
+
+/**
+ * Creates object with functions to add or remove an emotion to the form based on button calling it
+ */
+function emotionFormFunctions(){
+    let emotionId = this.getAttribute("data-id")
+    let added = false
+
+    const add = () => {
+        // Add to form
+        document.querySelector("#form-emotions-container").prepend(Emotion.find(emotionId).createFormDiv())
+
+        // Toggle checkbox on
+        document.querySelector(`#emotion-checkbox-${emotionId}`).checked = true
+        // Change button name
+        this.innerHTML = "Remove"
+        // Change button color
+        this.classList.remove("btn-primary")
+        this.classList.add("btn-danger")
+        // Change added to True
+        added = true
+    }
+
+    const remove = () => {
+        let div = document.querySelector(`#form-emotion-div-${emotionId}`)
+        div.parentNode.removeChild(div)
+
+        document.querySelector(`#emotion-checkbox-${emotionId}`).checked = false
+
+        this.innerHTML = "Add"
+
+        this.classList.remove("btn-danger")
+        this.classList.add("btn-primary")
+
+        added=false
+    }
+
+    const toggle = e => {
+        e.preventDefault()
+        added ? remove() : add()
+    }
+
+    return toggle
+}
+
 
 function resetEntryForm(){
     entryForm().querySelector(".rating-slider").value = 50

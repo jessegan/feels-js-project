@@ -41,11 +41,24 @@ class Emotion {
         return emotions
     }
 
+    static find(id){
+        return this.all.find(emotion => emotion.id == id)
+    }
+
     // INSTANCE METHODS
 
     createModalDiv(){
         let div = document.createElement('div')
         div.classList.add("col-sm-auto","border","rounded-pill","mx-1")
+        div.innerHTML = this.name
+
+        return div
+    }
+
+    createFormDiv(){
+        let div = document.createElement('div')
+        div.classList.add("col-sm-auto","border","rounded-pill","mx-1","my-1")
+        div.id = `form-emotion-div-${this.id}`
         div.innerHTML = this.name
 
         return div
@@ -58,7 +71,7 @@ class Emotion {
         input.type = 'checkbox'
         input.name = 'emotions'
         input.value = this.id
-        input.id = `emotion-${this.id}`
+        input.id = `emotion-checkbox-${this.id}`
         input.hidden = true
 
         form.appendChild(input)
@@ -79,7 +92,12 @@ class Emotion {
 
         let btn = document.createElement('button')
         btn.classList.add("btn","btn-primary","btn-sm","rounded-pill","mx-5")
+        btn.setAttribute("data-id",this.id)
         btn.innerHTML = "Add"
+
+        const toggleFunc = emotionFormFunctions.call(btn)
+        btn.addEventListener("click",toggleFunc)
+
         div.appendChild(btn)
 
         modal.querySelector(".modal-body").appendChild(div)
