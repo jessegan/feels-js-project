@@ -9,6 +9,7 @@ class EntriesController < ApplicationController
 
     # creates a new Entry based on params and renders json for new entry
     def create
+        puts entryParams
         entry = Entry.new(entryParams)
 
         if entry.save
@@ -39,7 +40,7 @@ class EntriesController < ApplicationController
     private
 
     def entryParams
-        params.require(:entry).permit(:rating,:note)
+        params.require(:entry).permit(:rating,emotion_ids:[])
     end
 
 end
