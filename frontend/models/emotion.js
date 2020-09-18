@@ -25,7 +25,7 @@ class Emotion {
         let emotions = emotionsData.map(data => {
             let attrs = data.attributes
             
-            return new Emotion(attrs.name)
+            return new Emotion(data.id,attrs.name)
         })
 
         return emotions
