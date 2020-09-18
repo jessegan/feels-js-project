@@ -66,4 +66,20 @@ class Emotion {
         return input
     }
 
+    renderModal(){
+        let modal = emotionFormModal()
+
+        let div = document.createElement('div')
+        div.classList.add("py-2")
+
+        let name = document.createElement('h6')
+        name.innerHTML = this.name
+
+        div.appendChild(name)
+
+        modal.querySelector(".modal-body").appendChild(div)
+
+        return div
+    }
+
 }

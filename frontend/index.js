@@ -2,6 +2,7 @@ const entriesList = () => document.querySelector("#entries-list")
 const dateContainer = () => document.querySelector("#date-container")
 const entryForm = () => document.querySelector("#entry-form")
 const entryModal = () => document.querySelector("#entryModal")
+const emotionFormModal = () => document.querySelector("#emotionFormModal")
 
 const baseURL = "http://localhost:3000"
 
@@ -99,6 +100,7 @@ function loadEmotionsForm(){
         .then(emotions => {
             emotions.forEach(e => {
                 e.renderFormInput()
+                e.renderModal()
             })
         })
 }
