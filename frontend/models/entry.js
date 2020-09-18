@@ -50,7 +50,7 @@ class Entry {
 
                 return Emotion.getEmotions(attrs.id)
                     .then(emotions => {
-                        Entry.create(attrs.id, attrs.rating, attrs.note, attrs.date,emotions)
+                        return Entry.create(attrs.id, attrs.rating, attrs.note, attrs.date,emotions)
                     })            
             })
         )
@@ -144,11 +144,15 @@ class Entry {
         // prevent default submit behavior
         e.preventDefault()
 
+        // handle emotion checkboxes
+        const emotionCheckboxes = document.querySelectorAll('input[name=emotions]:checked')
+
+
         // create strong params for entry data
         const strongParams = {
             entry: {
                 rating: this.querySelector(".rating-slider").value,
-                note: this.querySelector(".note-textarea").value
+                emotion_ids: Array.from(emotionCheckboxes,checkbox => checkbox.value)
             }
         }
 
@@ -166,8 +170,8 @@ class Entry {
         fetch(`${baseURL}/entries`,config)
             .then(resp => resp.json())
             .then(entryData => {
-                let data = entryData.data.attributes
-                Entry.create(data.id,data.rating,data.note,data.date).render(false)
+                Entry.createEntries([entryData.data])
+                    .then(res => res[0].render(false))
             })
             .catch(err => console.log(err))
 
