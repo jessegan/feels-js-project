@@ -45,6 +45,16 @@ class Emotion {
         return this.all.find(emotion => emotion.id == id)
     }
 
+    static renderEmotionsOnForm(){
+        document.querySelector("#form-emotions-checkboxes").innerHTML = ""
+        emotionFormModal().querySelector(".modal-body").innerHTML = ""
+
+        this.all.forEach(emotion => {
+            emotion.renderFormInput()
+            emotion.renderModal()
+        })
+    }
+
     // INSTANCE METHODS
 
     createModalDiv(){
@@ -65,7 +75,7 @@ class Emotion {
     }
 
     renderFormInput(){
-        let form = entryForm()
+        let checkboxes = document.querySelector("#form-emotions-checkboxes")
 
         let input = document.createElement('input')
         input.type = 'checkbox'
@@ -74,13 +84,13 @@ class Emotion {
         input.id = `emotion-checkbox-${this.id}`
         input.hidden = true
 
-        form.appendChild(input)
+        checkboxes.appendChild(input)
 
         return input
     }
 
     renderModal(){
-        let modal = emotionFormModal()
+        let modalBody = emotionFormModal().querySelector(".modal-body")
 
         let div = document.createElement('div')
         div.classList.add("py-2","border-top","border-bottom")
@@ -100,7 +110,7 @@ class Emotion {
 
         div.appendChild(btn)
 
-        modal.querySelector(".modal-body").appendChild(div)
+        modalBody.appendChild(div)
 
         return div
     }
