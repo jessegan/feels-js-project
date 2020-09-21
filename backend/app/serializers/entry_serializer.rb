@@ -1,7 +1,7 @@
 class EntrySerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :id, :rating, :note
+  attributes :id, :rating
 
   has_many :emotions, links: {
     emotions: -> (obj) {
