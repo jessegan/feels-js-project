@@ -34,8 +34,8 @@ function callOnLoad(){
     entryForm().querySelector("#add-emotion-btn").addEventListener("click",e=>e.preventDefault())
     entryForm().addEventListener("submit",Entry.createFromForm)
 
-    document.querySelector("#scroll-left").addEventListener("click",scrollEntriesList.bind(null,-750))
-    document.querySelector("#scroll-right").addEventListener("click",scrollEntriesList.bind(null,750))
+    leftScrollButton().addEventListener("click",scrollEntriesList.bind(null,-750))
+    rightScrollButton().addEventListener("click",scrollEntriesList.bind(null,750))
 }
 
 /**
@@ -124,7 +124,7 @@ function emotionFormFunctions(){
 
     const add = () => {
         // Add to form
-        document.querySelector("#form-emotions-container").prepend(Emotion.find(emotionId).createFormDiv())
+        emotionFormContainer().prepend(Emotion.find(emotionId).createFormDiv())
 
         // Toggle checkbox on
         document.querySelector(`#emotion-checkbox-${emotionId}`).checked = true

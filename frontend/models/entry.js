@@ -181,7 +181,7 @@ class Entry {
     static deleteFromButton(e){
 
         let entryId = this.getAttribute("data-id")
-        let entryDiv = document.querySelector(`#entry-${entryId}`)
+        let div = entryDiv(entryId)
 
         const config = {
             method: 'DELETE',
@@ -198,7 +198,7 @@ class Entry {
                 Entry.all = Entry.all.filter(entry => entry.id !== data.data.id)
 
                 // Remove entry from page
-                entryDiv.parentNode.removeChild(entryDiv)
+                div.parentNode.removeChild(div)
             })
             .catch(err => console.log(err))
     }
