@@ -1,8 +1,22 @@
+/** QUERY SELECTOR METHODS */
+
+// entries list
 const entriesList = () => document.querySelector("#entries-list")
-const dateContainer = () => document.querySelector("#date-container")
-const entryForm = () => document.querySelector("#entry-form")
+const entryDiv = id => document.querySelector(`#entry-${id}`)
 const entryModal = () => document.querySelector("#entryModal")
+
+// date and time
+const dateContainer = () => document.querySelector("#date-container")
+
+// entry form
+const entryForm = () => document.querySelector("#entry-form")
 const emotionFormModal = () => document.querySelector("#emotionFormModal")
+const emotionFormCheckboxes = () => document.querySelector("#form-emotions-checkboxes")
+const emotionFormContainer = () => document.querySelector("#form-emotions-container")
+
+// scroll buttons
+const leftScrollButton = () => document.querySelector("#scroll-left")
+const rightScrollButton = () => document.querySelector("#scroll-right")
 
 const baseURL = "http://localhost:3000"
 
