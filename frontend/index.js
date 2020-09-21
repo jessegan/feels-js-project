@@ -4,15 +4,25 @@
 const entriesList = () => document.querySelector("#entries-list")
 const entryDiv = id => document.querySelector(`#entry-${id}`)
 const entryModal = () => document.querySelector("#entryModal")
+const entryModalTitle = () => entryModal().querySelector(".modal-title")
+const entryModalRating = () => entryModal().querySelector(".rating-value")
+const entryModalEmotions = () => entryModal().querySelector(".emotions-list")
+const entryModalDeleteButton = () => entryModal().querySelector(".modal-footer button")
 
 // date and time
 const dateContainer = () => document.querySelector("#date-container")
 
 // entry form
 const entryForm = () => document.querySelector("#entry-form")
+const addEmotionButton = () => entryForm().querySelector("#add-emotion-btn")
+const ratingSlider = () => entryForm().querySelector(".rating-slider")
 const emotionFormModal = () => document.querySelector("#emotionFormModal")
+const emotionFormModalBody = () => emotionFormModal().querySelector(".modal-body")
 const emotionFormCheckboxes = () => document.querySelector("#form-emotions-checkboxes")
+const emotionFormCheckbox = id => emotionFormCheckboxes().querySelector(`#emotion-checkbox-${id}`)
 const emotionFormContainer = () => document.querySelector("#form-emotions-container")
+const emotionFormDiv = id => emotionFormContainer().querySelector(`#form-emotion-div-${id}`)
+const emotionFormCheckedEmotions = () => document.querySelectorAll('input[name=emotions]:checked')
 
 // scroll buttons
 const leftScrollButton = () => document.querySelector("#scroll-left")
@@ -31,7 +41,7 @@ function callOnLoad(){
     loadEntries()
     
     loadEmotionsForm()
-    entryForm().querySelector("#add-emotion-btn").addEventListener("click",e=>e.preventDefault())
+    addEmotionButton().addEventListener("click",e=>e.preventDefault())
     entryForm().addEventListener("submit",Entry.createFromForm)
 
     leftScrollButton().addEventListener("click",scrollEntriesList.bind(null,-750))
@@ -127,7 +137,7 @@ function emotionFormFunctions(){
         emotionFormContainer().prepend(Emotion.find(emotionId).createFormDiv())
 
         // Toggle checkbox on
-        document.querySelector(`#emotion-checkbox-${emotionId}`).checked = true
+        emotionFormCheckbox(emotionId).checked = true
         // Change button name
         this.innerHTML = "Remove"
         // Change button color
@@ -138,10 +148,10 @@ function emotionFormFunctions(){
     }
 
     const remove = () => {
-        let div = document.querySelector(`#form-emotion-div-${emotionId}`)
+        let div = emotionFormDiv(emotionId)
         div.parentNode.removeChild(div)
 
-        document.querySelector(`#emotion-checkbox-${emotionId}`).checked = false
+        emotionFormCheckbox(emotionId).checked = false
 
         this.innerHTML = "Add"
 
@@ -161,7 +171,7 @@ function emotionFormFunctions(){
 
 
 function resetEntryForm(){
-    entryForm().querySelector(".rating-slider").value = 50
+    ratingSlider().value = 50
     Emotion.renderEmotionsOnForm()
 }
 

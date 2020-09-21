@@ -47,7 +47,7 @@ class Emotion {
 
     static renderEmotionsOnForm(){
         emotionFormCheckboxes().innerHTML = ""
-        emotionFormModal().querySelector(".modal-body").innerHTML = ""
+        emotionFormModalBody().innerHTML = ""
         emotionFormContainer().innerHTML = ""
 
         this.all.forEach(emotion => {
@@ -91,7 +91,7 @@ class Emotion {
     }
 
     renderModal(){
-        let modalBody = emotionFormModal().querySelector(".modal-body")
+        let modalBody = emotionFormModalBody()
 
         let div = document.createElement('div')
         div.classList.add("py-2","border-top","border-bottom")

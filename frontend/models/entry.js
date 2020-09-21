@@ -97,24 +97,23 @@ class Entry {
      * 
      */
     static renderModal(){
-        let title = entryModal().querySelector(".modal-title")
+        let title = entryModalTitle()
         title.innerHTML = `${this.date.toLocaleDateString('default', {weekday: 'long'})}, ${this.date.toLocaleString('default', {month: 'short'})} ${this.date.getDate()} ${this.date.getFullYear()}`
 
-        let rating = entryModal().querySelector(".rating-value")
+        let rating = entryModalRating()
         rating.innerHTML = this.rating
 
-        let emotionsContainer = entryModal().querySelector(".emotions-list")
+        let emotionsContainer = entryModalEmotions()
         emotionsContainer.innerHTML = ""
         this.emotions.forEach(e => {
             emotionsContainer.appendChild(e.createModalDiv())
         })
 
-        let old_button = entryModal().querySelector(".modal-footer button")
+        let old_button = entryModalDeleteButton()
         let new_button = old_button.cloneNode(true)
         new_button.setAttribute("data-id",this.id)
         new_button.addEventListener("click",Entry.deleteFromButton)
         old_button.parentNode.replaceChild(new_button,old_button)
-
     }
 
 
@@ -144,13 +143,12 @@ class Entry {
         e.preventDefault()
 
         // handle emotion checkboxes
-        const emotionCheckboxes = document.querySelectorAll('input[name=emotions]:checked')
-
+        const emotionCheckboxes = emotionFormCheckedEmotions()
 
         // create strong params for entry data
         const strongParams = {
             entry: {
-                rating: this.querySelector(".rating-slider").value,
+                rating: ratingSlider().value,
                 emotion_ids: Array.from(emotionCheckboxes,checkbox => checkbox.value)
             }
         }
