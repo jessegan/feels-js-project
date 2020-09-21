@@ -8,13 +8,12 @@ class Entry {
      * 
      * @param {Integer} id 
      * @param {Integer} rating 
-     * @param {String} note 
      * @param {String} date 
+     * @param {Array<Emotion>} emotions
      */
-    constructor(id,rating,note,date,emotions = []){
+    constructor(id,rating,date,emotions = []){
         this.id=id
         this.rating=rating
-        this.note=note
         this.date= new Date(date)
 
         this.emotions = emotions
@@ -25,13 +24,13 @@ class Entry {
      * 
      * @param {Integer} id 
      * @param {Integer} rating 
-     * @param {String} note 
      * @param {String} date 
+     * @param {Array<Emotion>} emotions
      * 
      * @return {Entry} newly constructed Entry
      */
-    static create(id,rating,note,date,emotions=[]){
-        let entry = new Entry(id,rating,note,date,emotions)
+    static create(id,rating,date,emotions=[]){
+        let entry = new Entry(id,rating,date,emotions)
 
         this.all.push(entry)
 
@@ -50,7 +49,7 @@ class Entry {
 
                 return Emotion.getEmotions(attrs.id)
                     .then(emotions => {
-                        return Entry.create(attrs.id, attrs.rating, attrs.note, attrs.date,emotions)
+                        return Entry.create(attrs.id, attrs.rating, attrs.date,emotions)
                     })            
             })
         )
