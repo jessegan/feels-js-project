@@ -28,22 +28,32 @@ const emotionFormCheckedEmotions = () => document.querySelectorAll('input[name=e
 const leftScrollButton = () => document.querySelector("#scroll-left")
 const rightScrollButton = () => document.querySelector("#scroll-right")
 
+
+/** BASE URL */
 const baseURL = "http://localhost:3000"
 
 
+/** ON LOAD */
 document.addEventListener("DOMContentLoaded", callOnLoad)
+
+/** FUNCTIONS */
 
 /**
  * Loads page content and add event listeners to key elements.
  */
 function callOnLoad(){
+    // Load date and clock at top of page
     loadCurrentDate()
+
+    // Load list of entries 
     loadEntries()
     
+    // Load list of emotions into form and form modal, add action to entry form
     loadEmotionsForm()
     addEmotionButton().addEventListener("click",e=>e.preventDefault())
     entryForm().addEventListener("submit",Entry.createFromForm)
 
+    // Add scroll actions to scroll buttons
     leftScrollButton().addEventListener("click",scrollEntriesList.bind(null,-750))
     rightScrollButton().addEventListener("click",scrollEntriesList.bind(null,750))
 }
@@ -52,7 +62,7 @@ function callOnLoad(){
  * Fetch entries data and then renders entries
  */
 function loadEntries(){
-
+    // GET request to retrieve entries
     fetch(`${baseURL}/entries`)
         .then(resp => resp.json())
         .then(data => {
@@ -68,10 +78,13 @@ function loadEntries(){
  * Load the current date and time on the page and set timeout for changing time
  */
 function loadCurrentDate(){
+    // renders date and clock at top of page
     renderDate()
 
+    // instantiate dataInterval object
     let date = dateInterval()
 
+    // start interval to update time
     date.start()
 }
 
@@ -120,7 +133,7 @@ function renderDate(){
  * Fetch emotions from API, load selection options into Entry form
  */
 function loadEmotionsForm(){
-    // fetch name and id of each emotion
+    // fetch name and id of each emotion and then render emotions onto entry form
     Emotion.getEmotions()
         .then(()=>Emotion.renderEmotionsOnForm())
 }
@@ -135,7 +148,6 @@ function emotionFormFunctions(){
     const add = () => {
         // Add to form
         emotionFormContainer().prepend(Emotion.find(emotionId).createFormDiv())
-
         // Toggle checkbox on
         emotionFormCheckbox(emotionId).checked = true
         // Change button name
@@ -148,19 +160,21 @@ function emotionFormFunctions(){
     }
 
     const remove = () => {
+        // Remove emotion div from form
         let div = emotionFormDiv(emotionId)
         div.parentNode.removeChild(div)
-
+        // Toggle checkbox off
         emotionFormCheckbox(emotionId).checked = false
-
+        // Change button name
         this.innerHTML = "Add"
-
+        // Change button color
         this.classList.remove("btn-danger")
         this.classList.add("btn-primary")
-
+        // Change added to false
         added=false
     }
 
+    // function that calls add or remove depending on added value
     const toggle = e => {
         e.preventDefault()
         added ? remove() : add()
@@ -169,13 +183,20 @@ function emotionFormFunctions(){
     return toggle
 }
 
-
+/**
+ * Resets the value of the entry form
+ */
 function resetEntryForm(){
     ratingSlider().value = 50
     Emotion.renderEmotionsOnForm()
 }
 
-
+/**
+ * Scrolls the entries list left or right depending on px value (scrolls right if px > 0 and vice versa)
+ * 
+ * @param {Integer} px 
+ * @param {Event} e 
+ */
 function scrollEntriesList(px,e){
     entriesList().scrollLeft += px
 }
