@@ -1,4 +1,4 @@
-# Jamlist
+# Feels
 
 Feels a single-page web application where users can log how they are feeling and assocate emotions to each of their Entries.
 
