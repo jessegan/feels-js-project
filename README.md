@@ -1,8 +1,12 @@
-# Feels
+# Feels - Mood & Emotion Logging
 
-Feels a single-page web application where users can log how they are feeling and assocate emotions to each of their Entries.
+Feels is a single-page mood and emotion logging application for people to keep track of how they are feeling over time. Users create entries that have a rating from 1-100 and a list of emotions that users can add from a preset list.
 
-This project is built on an Rails API backend with a Postgresql database and a JavaScript and html frontend. 
+This project is built on an Rails API backend with a Postgresql database and a JavaScript and Bootstrap-styled frontend. 
+
+[Video Demo](https://www.youtube.com/watch?v=htU7ocbUeTw&ab_channel=JesseGan)
+
+[Blog](https://medium.com/@jesse.gan/flatiron-blog-5-javascript-never-breaks-a-promise-dad277021c30)
 
 ## Installation
 
