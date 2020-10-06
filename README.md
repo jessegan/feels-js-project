@@ -1,5 +1,7 @@
 # Feels - Mood & Emotion Logging
 
+![Feels Homescreen Screenshot](../media/feels_homescreen_image.PNG?raw=true)
+
 Feels is a single-page mood and emotion logging application for people to keep track of how they are feeling over time. Users create entries that have a rating from 1-100 and a list of emotions that users can add from a preset list.
 
 This project is built on an Rails API backend with a Postgresql database and a JavaScript and Bootstrap-styled frontend. 
