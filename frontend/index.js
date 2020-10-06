@@ -91,7 +91,7 @@ function loadCurrentDate(){
 /**
  * Return an object for the dateInterval that starts and stop an interval to update the date
  */
-function dateInterval(){
+const dateInterval = () => {
     let id
 
     // Sets and interval to render the date and time on the page
